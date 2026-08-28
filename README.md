@@ -45,8 +45,8 @@ No `npm install` or complex build steps required.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Harshitha-Suram6/github-analyzer.git
-   cd github-analyzer
+   git clone https://github.com/Harshitha-Suram6/github-activity-analyzer.git
+   cd github-activity-analyzer
    ```
 
 2. **Open in your browser**:
