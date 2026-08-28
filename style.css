@@ -402,15 +402,28 @@ body {
   gap: 6px;
   color: var(--text-muted);
   font-size: 13px;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.meta-item .val {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .meta-item svg {
   color: var(--text-dim);
+  flex-shrink: 0;
 }
 
 .meta-item a {
   color: var(--accent-blue);
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .meta-item a:hover {
@@ -422,6 +435,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 16px;
+  width: 100%;
 }
 
 .stat-card {
@@ -433,6 +447,8 @@ body {
   border-radius: var(--radius-md);
   padding: 14px 16px;
   transition: var(--transition-fast);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .stat-card:hover {
@@ -455,6 +471,8 @@ body {
 .stat-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .stat-value {
@@ -462,6 +480,9 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-main);
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .stat-label {
@@ -469,6 +490,8 @@ body {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 /* Section Titles */
@@ -566,6 +589,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   transition: var(--transition-fast);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .repo-card:hover {
@@ -580,6 +605,7 @@ body {
   font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 6px;
+  min-width: 0;
 }
 
 .repo-name a {
@@ -588,6 +614,8 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .repo-name a:hover {
@@ -604,14 +632,16 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   height: 36px;
+  word-break: break-word;
 }
 
 .repo-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   font-size: 12px;
   color: var(--text-muted);
+  flex-wrap: wrap;
 }
 
 .lang-badge {

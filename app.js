@@ -151,6 +151,8 @@ function setMetaItem(id, val) {
  * Render Chart.js Visualizations
  */
 function renderCharts(repos) {
+  const isMobile = window.innerWidth < 640;
+
   // --- 1. Languages Chart ---
   const langCount = {};
   repos.forEach(r => {
@@ -185,7 +187,12 @@ function renderCharts(repos) {
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: '#8b949e', font: { family: 'Inter', size: 12 }, padding: 16 }
+            labels: {
+              color: '#8b949e',
+              font: { family: 'Inter', size: isMobile ? 11 : 12 },
+              padding: isMobile ? 10 : 16,
+              boxWidth: isMobile ? 12 : 16
+            }
           }
         }
       }
@@ -201,10 +208,11 @@ function renderCharts(repos) {
   const starsCanvas = document.getElementById('starsChart');
 
   if (topStarredRepos.length > 0) {
+    const maxLen = isMobile ? 8 : 14;
     starsChart = new Chart(starsCanvas, {
       type: 'bar',
       data: {
-        labels: topStarredRepos.map(r => r.name.length > 14 ? r.name.substring(0, 12) + '…' : r.name),
+        labels: topStarredRepos.map(r => r.name.length > maxLen ? r.name.substring(0, maxLen - 2) + '…' : r.name),
         datasets: [{
           label: 'Stars',
           data: topStarredRepos.map(r => r.stargazers_count),
@@ -222,7 +230,11 @@ function renderCharts(repos) {
         },
         scales: {
           x: {
-            ticks: { color: '#8b949e', font: { family: 'Inter', size: 11 } },
+            ticks: {
+              color: '#8b949e',
+              font: { family: 'Inter', size: isMobile ? 10 : 11 },
+              maxRotation: isMobile ? 45 : 0
+            },
             grid: { color: 'rgba(255, 255, 255, 0.05)' }
           },
           y: {
